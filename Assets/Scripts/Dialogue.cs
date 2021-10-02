@@ -1,30 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
+    [SerializeField] private Collider2D trigger;
     [SerializeField] private float characterDelay = 0.08f;
     [SerializeField] private float sentenceDelay = 2;
-    
-    [Header("Refs")]
-    [SerializeField] private Collider2D trigger;
+    [SerializeField] private float textOffset = 1;
+    [SerializeField] private int fontSize = 75;
     [SerializeField] private List<String> sentences = new List<string>();
-    [SerializeField] private GameObject textObj;
+
     
-    private Text uiText;
-    private bool triggered = false; 
-    
+    private GameObject textObj;
+    private TextMesh tm;
+    private bool triggered = false;
     private int sentenceIndex = 0;
-    private int charIndex = 0;
-    private bool sentenceComplete = false;
+
     
-    private void Start()
-    {
-        uiText = textObj.GetComponent<Text>();
-    }
+    
+    private void Start() => CreateTextMesh();
+
+    private void Update() => SetTextPosition();
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,16 +37,47 @@ public class Dialogue : MonoBehaviour
     {
         triggered = true;
         sentenceIndex = 0;
-        uiText.text = "";
-        StartCoroutine(PrintSentence(sentences[sentenceIndex]));
+        tm.text = "";
+
+        StartCoroutine(PrintCharacters());
     }
 
-    IEnumerator PrintSentence(string sentence) {
-        foreach (char letter in sentence.ToCharArray()) {
-                uiText.text += letter;
+    IEnumerator PrintCharacters()
+    {
+        tm.text = "";
+        
+        foreach (char letter in sentences[sentenceIndex].ToCharArray()) {
+            tm.text += letter;
             yield return new WaitForSeconds(characterDelay);
         }
 
-        print("done");
-        print("Yes");
-    }}
+        sentenceIndex++;
+        if (sentenceIndex < sentences.Count)
+            StartCoroutine(PrintNextSentence());
+    }
+
+    IEnumerator PrintNextSentence()
+    {
+        yield return new WaitForSeconds(sentenceDelay);
+        StartCoroutine(PrintCharacters());
+    }
+
+    
+    private void SetTextPosition()
+    {
+        tm.transform.position = transform.position + Vector3.up * textOffset;
+    }
+
+    private void CreateTextMesh()
+    {
+        textObj = new GameObject("Speaker_Text");
+        textObj.transform.parent = transform;
+        tm = textObj.AddComponent<TextMesh>();
+        tm.color = Color.white;
+        tm.fontStyle = FontStyle.Bold;
+        tm.alignment = TextAlignment.Center;
+        tm.anchor = TextAnchor.MiddleCenter;
+        tm.characterSize = 0.06f;
+        tm.fontSize = fontSize;
+    }
+}
