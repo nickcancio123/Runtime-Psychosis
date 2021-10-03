@@ -711,6 +711,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 7351780161926948177, guid: c20ee6c5f3e4cbb478d19a45dfca82fc, type: 3}
+      propertyPath: doScan
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8857107504595807226, guid: c20ee6c5f3e4cbb478d19a45dfca82fc, type: 3}
       propertyPath: sightDistance
       value: 8

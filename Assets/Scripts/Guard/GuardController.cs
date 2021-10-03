@@ -17,6 +17,7 @@ public class GuardController : MonoBehaviour
     public int faceDirection = 1;
 
     private Vector3 initialScale;
+    [SerializeField] private Animator animator;
 
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public bool isDead = false;  
@@ -51,5 +52,12 @@ public class GuardController : MonoBehaviour
         if (rb.velocity.x < 0)
             faceDirection = -1;
         transform.localScale = new Vector3(initialScale.x * faceDirection, initialScale.y, initialScale.z);
+    }
+
+    public void OnDie()
+    {
+        isDead = true;
+        animator.SetBool("Dead", true);
+        rb.velocity = Vector2.zero;
     }
 }

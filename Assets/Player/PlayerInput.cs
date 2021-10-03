@@ -125,6 +125,44 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interact"",
+            ""id"": ""541397e3-14b3-4703-8d32-3c79371dfa37"",
+            ""actions"": [
+                {
+                    ""name"": ""HeadButt"",
+                    ""type"": ""Button"",
+                    ""id"": ""f07f4fcf-9b01-4b3f-8974-b7539c92b7f7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""346b85e9-f218-4c79-a747-ac24d4b6abd2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeadButt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13676f74-18b7-472a-8640-273384b35bdd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeadButt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -133,6 +171,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Run = m_Movement.FindAction("Run", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        // Interact
+        m_Interact = asset.FindActionMap("Interact", throwIfNotFound: true);
+        m_Interact_HeadButt = m_Interact.FindAction("HeadButt", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -219,9 +260,46 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // Interact
+    private readonly InputActionMap m_Interact;
+    private IInteractActions m_InteractActionsCallbackInterface;
+    private readonly InputAction m_Interact_HeadButt;
+    public struct InteractActions
+    {
+        private @PlayerInput m_Wrapper;
+        public InteractActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HeadButt => m_Wrapper.m_Interact_HeadButt;
+        public InputActionMap Get() { return m_Wrapper.m_Interact; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractActions set) { return set.Get(); }
+        public void SetCallbacks(IInteractActions instance)
+        {
+            if (m_Wrapper.m_InteractActionsCallbackInterface != null)
+            {
+                @HeadButt.started -= m_Wrapper.m_InteractActionsCallbackInterface.OnHeadButt;
+                @HeadButt.performed -= m_Wrapper.m_InteractActionsCallbackInterface.OnHeadButt;
+                @HeadButt.canceled -= m_Wrapper.m_InteractActionsCallbackInterface.OnHeadButt;
+            }
+            m_Wrapper.m_InteractActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @HeadButt.started += instance.OnHeadButt;
+                @HeadButt.performed += instance.OnHeadButt;
+                @HeadButt.canceled += instance.OnHeadButt;
+            }
+        }
+    }
+    public InteractActions @Interact => new InteractActions(this);
     public interface IMovementActions
     {
         void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IInteractActions
+    {
+        void OnHeadButt(InputAction.CallbackContext context);
     }
 }
