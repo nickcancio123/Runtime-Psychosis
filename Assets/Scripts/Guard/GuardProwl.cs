@@ -20,8 +20,6 @@ public class GuardProwl : StateMachineBehaviour
     private bool doScan = true;
     private int walkDirection = -1;
 
-    private bool touchingPlayer;
-
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -45,6 +43,11 @@ public class GuardProwl : StateMachineBehaviour
         //Else pause
         else
             ReachedEnd();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
     }
 
     private void Initialize(Animator animator)
@@ -83,21 +86,15 @@ public class GuardProwl : StateMachineBehaviour
 
     private void ScanForPlayer()
     {
-        Vector2 origin = guardObj.transform.position + new Vector3(1.1f * walkDirection, GuardController.eyeLevel);
+        Vector2 origin = guardObj.transform.position + new Vector3(1.6f * walkDirection, GuardController.eyeLevel);
         RaycastHit2D raycastHit = Physics2D.Raycast(origin, Vector2.right * walkDirection, guardController.sightDistance, guardController.rayCastLayerMask);
         Debug.DrawLine(origin, origin + Vector2.right * walkDirection * guardController.sightDistance, Color.green, Time.deltaTime);
 
         if (!raycastHit)
             return;
-
+        
         if (raycastHit.collider.gameObject.CompareTag("Player"))
-        {
-            PlayerController playerController = raycastHit.collider.gameObject.GetComponent<PlayerController>();
-            guardController.playerController = playerController;
-            playerController.Spotted();
-            
             _animator.SetTrigger("Spotted");
-        }
     }
 }
 

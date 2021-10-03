@@ -8,8 +8,6 @@ public class GuardController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform bound1;
     public Transform bound2;
-    public LayerMask rayCastLayerMask;
-    public GuardChargeTrigger chargeTrigger;
 
     public bool doWalk = true;
     public bool doScan = true;
@@ -17,17 +15,12 @@ public class GuardController : MonoBehaviour
     public float walkSpeed = 0;
     public float maxPauseTime = 3;
     public float sightDistance = 10;
+    public LayerMask rayCastLayerMask;
+
     public static float eyeLevel = 0.7f;
-    public int faceDirection = 1;
 
-    private Vector3 initialScale;
-
-    [HideInInspector] public PlayerController playerController;
-
-    
     private void Start()
     {
-        initialScale = transform.localScale;
         ReleaseBounds();
     }
 
@@ -36,17 +29,4 @@ public class GuardController : MonoBehaviour
         bound1.transform.parent = null;
         bound2.transform.parent = null;
     }
-
-    private void Update()
-    {
-        SetFaceDirection();
-    }
-
-    private void SetFaceDirection()
-    {
-        faceDirection = (int)Mathf.Sign(rb.velocity.x);
-        transform.localScale = new Vector3(initialScale.x * faceDirection, initialScale.y, initialScale.z);
-    }
-    
-    
 }
