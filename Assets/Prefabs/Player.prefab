@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: e0ce660d05d25834aa1986afe925bf9e, type: 3}
-  m_Color: {r: 0.7735849, g: 0.39700958, b: 0.40381923, a: 1}
+  m_Color: {r: 0.15557136, g: 0.8962264, b: 0.24864025, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -173,7 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 17165682557028854}
   animator: {fileID: 2558343919010880647}
-  renderer: {fileID: 8993502879031511407}
   movement: {fileID: 17165682557028853}
 --- !u!114 &17165682557028853
 MonoBehaviour:
@@ -205,7 +204,7 @@ MonoBehaviour:
   moveController: {fileID: 17165682557028853}
   runSpeed: 10
   groundAccel: 0.4
-  airAccel: 0.025
+  airAccel: 0.04
 --- !u!114 &6470073358722129798
 MonoBehaviour:
   m_ObjectHideFlags: 0

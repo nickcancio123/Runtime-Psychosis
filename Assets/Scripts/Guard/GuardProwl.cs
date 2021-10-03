@@ -9,6 +9,7 @@ public class GuardProwl : StateMachineBehaviour
     
     private GameObject guardObj;
     private GuardController guardController;
+    private FlashLight flashLight;
     private Rigidbody2D rb;
 
     private Transform bound1;
@@ -30,7 +31,7 @@ public class GuardProwl : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (doScan)
+        if (doScan && flashLight.isWorking)
             ScanForPlayer();
 
         if (!doWalk)
@@ -51,6 +52,7 @@ public class GuardProwl : StateMachineBehaviour
     {
         _animator = animator;
         guardObj = animator.gameObject;
+        flashLight = guardObj.GetComponent<FlashLight>();
         guardController = guardObj.GetComponent<GuardController>();
         rb = guardController.rb;
         walkDirection = (Random.Range(0, 2) > 0) ? -1 : 1;
