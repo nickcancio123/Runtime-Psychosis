@@ -9,7 +9,15 @@ public class HideableObject : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<Hide>();
+            other.gameObject.GetComponent<Hide>().canHide = true;
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Hide>().canHide = false;
         }
     }
 }

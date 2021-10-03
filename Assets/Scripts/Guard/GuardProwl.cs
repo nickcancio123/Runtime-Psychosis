@@ -94,7 +94,12 @@ public class GuardProwl : StateMachineBehaviour
 
         if (raycastHit.collider.gameObject.CompareTag("Player"))
         {
-            PlayerController playerController = raycastHit.collider.gameObject.GetComponent<PlayerController>();
+            GameObject player = raycastHit.collider.gameObject;
+            Hide hide = player.GetComponent<Hide>();
+            if (hide.IsHiding())
+                return;
+            
+            PlayerController playerController = player.GetComponent<PlayerController>();
             guardController.playerController = playerController;
             playerController.Spotted();
             
