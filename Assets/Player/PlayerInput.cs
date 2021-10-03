@@ -137,6 +137,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Hide"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cc9f55e-ea8d-47dd-ad0c-8904fd2994c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -161,6 +169,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""HeadButt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b6f20f8-e64b-4169-93b4-4a0a0228611d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05a2fd4a-43b0-4dd4-a417-606c227026b3"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,6 +204,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         // Interact
         m_Interact = asset.FindActionMap("Interact", throwIfNotFound: true);
         m_Interact_HeadButt = m_Interact.FindAction("HeadButt", throwIfNotFound: true);
+        m_Interact_Hide = m_Interact.FindAction("Hide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,11 +296,13 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Interact;
     private IInteractActions m_InteractActionsCallbackInterface;
     private readonly InputAction m_Interact_HeadButt;
+    private readonly InputAction m_Interact_Hide;
     public struct InteractActions
     {
         private @PlayerInput m_Wrapper;
         public InteractActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @HeadButt => m_Wrapper.m_Interact_HeadButt;
+        public InputAction @Hide => m_Wrapper.m_Interact_Hide;
         public InputActionMap Get() { return m_Wrapper.m_Interact; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +315,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @HeadButt.started -= m_Wrapper.m_InteractActionsCallbackInterface.OnHeadButt;
                 @HeadButt.performed -= m_Wrapper.m_InteractActionsCallbackInterface.OnHeadButt;
                 @HeadButt.canceled -= m_Wrapper.m_InteractActionsCallbackInterface.OnHeadButt;
+                @Hide.started -= m_Wrapper.m_InteractActionsCallbackInterface.OnHide;
+                @Hide.performed -= m_Wrapper.m_InteractActionsCallbackInterface.OnHide;
+                @Hide.canceled -= m_Wrapper.m_InteractActionsCallbackInterface.OnHide;
             }
             m_Wrapper.m_InteractActionsCallbackInterface = instance;
             if (instance != null)
@@ -289,6 +325,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @HeadButt.started += instance.OnHeadButt;
                 @HeadButt.performed += instance.OnHeadButt;
                 @HeadButt.canceled += instance.OnHeadButt;
+                @Hide.started += instance.OnHide;
+                @Hide.performed += instance.OnHide;
+                @Hide.canceled += instance.OnHide;
             }
         }
     }
@@ -301,5 +340,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface IInteractActions
     {
         void OnHeadButt(InputAction.CallbackContext context);
+        void OnHide(InputAction.CallbackContext context);
     }
 }
