@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour
     private List<MovementModifier> modifiers = new List<MovementModifier>();
     public void AddModifier(MovementModifier modifier) => modifiers.Add(modifier);
     
-    private int faceDirection;
+    private int faceDirection = 1;
     private Vector3 initialScale;
 
     private void Start()
@@ -38,7 +38,10 @@ public class MovementController : MonoBehaviour
 
     void SetFaceDirection()
     {
-        faceDirection = (int)Mathf.Sign(rb.velocity.x);
+        if (rb.velocity.x > 0)
+            faceDirection = 1;
+        if (rb.velocity.x < 0)
+            faceDirection = -1;
         transform.localScale = new Vector3(initialScale.x * faceDirection, initialScale.y, initialScale.z);
     }
     
