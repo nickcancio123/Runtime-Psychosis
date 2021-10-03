@@ -44,7 +44,10 @@ public class GuardController : MonoBehaviour
 
     private void SetFaceDirection()
     {
-        faceDirection = (int)Mathf.Sign(rb.velocity.x);
+        if (rb.velocity.x > 0)
+            faceDirection = 1;
+        if (rb.velocity.x < 0)
+            faceDirection = -1;
         transform.localScale = new Vector3(initialScale.x * faceDirection, initialScale.y, initialScale.z);
     }
     
