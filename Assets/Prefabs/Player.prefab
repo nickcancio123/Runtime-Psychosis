@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 17165682557028853}
   - component: {fileID: 1129368138313466346}
   - component: {fileID: 6470073358722129798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 2403771689945936961}
   - component: {fileID: 4645996284350372311}
   - component: {fileID: 3644545439604003051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 3409897497444012291}
   - component: {fileID: 1552220328237860599}
   - component: {fileID: 33777312625967772}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
