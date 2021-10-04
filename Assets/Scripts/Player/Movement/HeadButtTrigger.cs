@@ -6,28 +6,33 @@ using UnityEngine;
 
 public class HeadButtTrigger : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        OnHeadButtObject(other);
-    }
+    [SerializeField] private AudioClip headButtHit;
+    [SerializeField] AudioSource playerAudioSource;
+    [SerializeField] private CameraShake camShake;
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        OnHeadButtObject(other);
-    }
+    private void OnTriggerEnter2D(Collider2D other) => OnTriggerDetection(other);
 
-    private void OnHeadButtObject(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other) => OnTriggerDetection(other);
+
+    private void OnTriggerDetection(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<GuardController>().OnDie();
-            gameObject.SetActive(false);
+            OnHeadButtHitBase();
         }
 
         if (other.gameObject.CompareTag("Glitch"))
         {
             other.gameObject.transform.parent.gameObject.GetComponent<GlitchInteraction>().PlayReactions();
-            gameObject.SetActive(false);
+            OnHeadButtHitBase();
         }
+    }
+
+    private void OnHeadButtHitBase()
+    {
+        playerAudioSource.clip = headButtHit;
+        playerAudioSource.Play();
+        camShake.Shake();
     }
 }
