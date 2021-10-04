@@ -66,7 +66,7 @@ public class GlitchInteraction : MonoBehaviour
         foreach (GlitchReaction reaction in reactions)
             reaction.React();
 
-        destructionParticles.Play();
+        //destructionParticles.Play();
         StartCoroutine(SelfDestruct(destructionParticles.main.duration));
     }
 
