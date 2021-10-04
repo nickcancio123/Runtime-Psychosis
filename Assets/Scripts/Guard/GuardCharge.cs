@@ -20,7 +20,7 @@ public class GuardCharge : StateMachineBehaviour
         chargeTrigger = guardController.chargeTrigger;
         chargeTrigger.isCharging = true;
 
-        guardController.rb.velocity = new Vector2(guardController.walkSpeed * guardController.faceDirection, 0);
+        guardController.rb.velocity = new Vector2(guardController.chargeSpeed * guardController.faceDirection, 0);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

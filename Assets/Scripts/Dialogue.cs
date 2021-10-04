@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private Collider2D trigger;
     [SerializeField] private float characterDelay = 0.08f;
     [SerializeField] private float sentenceDelay = 2;
     [SerializeField] private float textOffset = 1;
@@ -21,9 +20,11 @@ public class Dialogue : MonoBehaviour
     private bool triggered = false;
     private int sentenceIndex = 0;
 
-    
-    
-    private void Start() => CreateTextMesh();
+
+    private void Start()
+    {
+        CreateTextMesh();
+    }
 
     private void Update() => SetTextPosition();
 

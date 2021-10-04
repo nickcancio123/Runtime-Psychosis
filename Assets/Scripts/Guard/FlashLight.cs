@@ -6,6 +6,7 @@ using UnityEngine;
 public class FlashLight : MonoBehaviour
 {
     [SerializeField] private GameObject lightEffect;
+    [SerializeField] private GuardController guardController;
     public bool isWorking = true;
 
     private void Update()
@@ -15,7 +16,7 @@ public class FlashLight : MonoBehaviour
 
     private void ShineLight()
     {
-        if (isWorking)
+        if (isWorking && guardController.doScan)
             lightEffect.SetActive(true);
         else
             lightEffect.SetActive(false);

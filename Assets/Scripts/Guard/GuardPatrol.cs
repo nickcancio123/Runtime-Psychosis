@@ -29,6 +29,12 @@ public class GuardPatrol : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (!guardController.patrol)
+        {
+            ReachedEnd();
+            return;
+        }
+        
         if (guardController.doScan && flashLight.isWorking)
             ScanForPlayer();
 
@@ -36,7 +42,7 @@ public class GuardPatrol : StateMachineBehaviour
         if ((guardController.walkDirection < 0 && guardObj.transform.position.x > leftBound.position.x) ||
             (guardController.walkDirection > 0 && guardObj.transform.position.x < rightBound.position.x))
         {
-            rb.velocity = new Vector2(guardController.walkDirection * guardController.walkSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(guardController.walkDirection * guardController.patrolSpeed, rb.velocity.y);
         }
         //Else pause
         else
@@ -88,7 +94,6 @@ public class GuardPatrol : StateMachineBehaviour
             guardController.playerController = playerController;
             playerController.Spotted();
 
-            Debug.Log("Spotted");
             _animator.SetTrigger("Spotted");
         }
     }

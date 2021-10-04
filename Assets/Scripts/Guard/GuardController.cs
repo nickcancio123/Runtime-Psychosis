@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class GuardController : MonoBehaviour
@@ -9,13 +11,15 @@ public class GuardController : MonoBehaviour
     public Transform bound1;
     public Transform bound2;
     public GuardChargeTrigger chargeTrigger;
+    public GameObject glitchHead;
 
-    public bool doWalk = true;
-
-    public float walkSpeed = 0;
+    public bool patrol = true;
+    public float patrolSpeed = 0;
+    public float chargeSpeed = 1;
+    
     public float maxPauseTime = 3;
-    public float walkDirection = 1;
-    public bool startRandomDirection = true;
+    public int startFaceDirection = 1;
+    [HideInInspector] public float walkDirection = 1;
     [HideInInspector] public int faceDirection = 1;
 
     private Vector3 initialScale;
@@ -26,13 +30,17 @@ public class GuardController : MonoBehaviour
 
 
     public float sightDistance = 10;
-    public static float eyeLevel = 0.7f;
     public LayerMask rayCastLayerMask;
     public bool doScan = true;
-    
+    public static float eyeLevel = 0.7f;
+    public static float deathFreezeDuration = 0.2f;
+    public static float deathKnockBackSpeed = 20;
+    public static float deathKnockBackDuration = 0.3f;
+
     private void Start()
     {
         initialScale = transform.localScale;
+        transform.localScale = new Vector3(initialScale.x * startFaceDirection, initialScale.y, initialScale.z);
         ReleaseBounds();
     }
 
@@ -42,6 +50,7 @@ public class GuardController : MonoBehaviour
         bound2.transform.parent = null;
     }
 
+    
     private void Update()
     {
         SetFaceDirection();
@@ -60,6 +69,7 @@ public class GuardController : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("Dead", true);
+        glitchHead.SetActive(false);
         rb.velocity = Vector2.zero;
     }
 }
