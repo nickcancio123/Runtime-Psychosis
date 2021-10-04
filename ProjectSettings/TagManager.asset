@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Music
   - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Glitch
   - 
   - 
   - 
@@ -41,6 +42,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Back
+    uniqueID: 2248119221
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 822358211
+    locked: 0
+  - name: Fore
+    uniqueID: 938702585
     locked: 0

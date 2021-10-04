@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MovementModifier : MonoBehaviour
 {
+    [HideInInspector] public bool active;
     protected PlayerInput playerInput;
     [SerializeField] protected MovementController moveController;
 

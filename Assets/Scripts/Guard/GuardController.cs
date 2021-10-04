@@ -8,22 +8,27 @@ public class GuardController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform bound1;
     public Transform bound2;
-    public LayerMask rayCastLayerMask;
     public GuardChargeTrigger chargeTrigger;
 
     public bool doWalk = true;
-    public bool doScan = true;
-    
+
     public float walkSpeed = 0;
     public float maxPauseTime = 3;
-    public float sightDistance = 10;
-    public static float eyeLevel = 0.7f;
-    public int faceDirection = 1;
+    public float walkDirection = 1;
+    public bool startRandomDirection = true;
+    [HideInInspector] public int faceDirection = 1;
 
     private Vector3 initialScale;
+    [SerializeField] private Animator animator;
 
     [HideInInspector] public PlayerController playerController;
+    [HideInInspector] public bool isDead = false;
 
+
+    public float sightDistance = 10;
+    public static float eyeLevel = 0.7f;
+    public LayerMask rayCastLayerMask;
+    public bool doScan = true;
     
     private void Start()
     {
@@ -50,6 +55,11 @@ public class GuardController : MonoBehaviour
             faceDirection = -1;
         transform.localScale = new Vector3(initialScale.x * faceDirection, initialScale.y, initialScale.z);
     }
-    
-    
+
+    public void OnDie()
+    {
+        isDead = true;
+        animator.SetBool("Dead", true);
+        rb.velocity = Vector2.zero;
+    }
 }

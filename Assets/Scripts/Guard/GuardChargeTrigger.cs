@@ -11,6 +11,16 @@ public class GuardChargeTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        OnChargeTriggered(other);
+    }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        OnChargeTriggered(other);
+    }
+
+    private void OnChargeTriggered(Collider2D other)
+    {
         if (!isCharging)
             return;
         
