@@ -47,9 +47,9 @@ public class GaurdPausePatrol : StateMachineBehaviour
 
     private void ScanForPlayer()
     {
-        Vector2 origin = guardObj.transform.position + new Vector3(1.1f * guardController.walkDirection, GuardController.eyeLevel);
-        RaycastHit2D raycastHit = Physics2D.Raycast(origin, Vector2.right * guardController.walkDirection, guardController.sightDistance, guardController.rayCastLayerMask);
-        Debug.DrawLine(origin, origin + Vector2.right * guardController.walkDirection * guardController.sightDistance, Color.green, Time.deltaTime);
+        Vector2 origin = guardObj.transform.position + new Vector3(1.1f * guardController.faceDirection, GuardController.eyeLevel);
+        RaycastHit2D raycastHit = Physics2D.Raycast(origin, Vector2.right * guardController.faceDirection, guardController.sightDistance, guardController.rayCastLayerMask);
+        Debug.DrawLine(origin, origin + Vector2.right * guardController.faceDirection * guardController.sightDistance, Color.green, Time.deltaTime);
 
         if (!raycastHit)
             return;

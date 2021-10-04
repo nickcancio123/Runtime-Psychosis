@@ -42,7 +42,6 @@ public class MainMenuManager : MonoBehaviour
             return;
         
         player.GetComponent<Animator>().SetTrigger("HeadButt");
-        player.GetComponent<MovementController>().enabled = true;
         StartCoroutine(HeadButtDelay());
         player.GetComponent<CameraShake>().Shake(mainMenuVCAM);
         mainMenuUI.SetActive(false);
@@ -53,7 +52,8 @@ public class MainMenuManager : MonoBehaviour
     IEnumerator HeadButtDelay()
     {
         yield return new WaitForSeconds(0.75f);
-        
+        player.GetComponent<MovementController>().enabled = true;
+
         player.GetComponent<AudioSource>().clip = headButtImpact;
         player.GetComponent<AudioSource>().Play();
         
