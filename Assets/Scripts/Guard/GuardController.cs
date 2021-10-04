@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class GuardController : MonoBehaviour
@@ -15,7 +16,8 @@ public class GuardController : MonoBehaviour
     public float chargeSpeed = 1;
     
     public float maxPauseTime = 3;
-    public float walkDirection = 1;
+    public int startFaceDirection = 1;
+    [HideInInspector] public float walkDirection = 1;
     [HideInInspector] public int faceDirection = 1;
 
     private Vector3 initialScale;
@@ -33,6 +35,7 @@ public class GuardController : MonoBehaviour
     private void Start()
     {
         initialScale = transform.localScale;
+        transform.localScale = new Vector3(initialScale.x * startFaceDirection, initialScale.y, initialScale.z);
         ReleaseBounds();
     }
 
@@ -42,6 +45,7 @@ public class GuardController : MonoBehaviour
         bound2.transform.parent = null;
     }
 
+    
     private void Update()
     {
         SetFaceDirection();

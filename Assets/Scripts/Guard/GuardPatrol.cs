@@ -32,6 +32,7 @@ public class GuardPatrol : StateMachineBehaviour
         if (!guardController.patrol)
         {
             ReachedEnd();
+            return;
         }
         
         if (guardController.doScan && flashLight.isWorking)
