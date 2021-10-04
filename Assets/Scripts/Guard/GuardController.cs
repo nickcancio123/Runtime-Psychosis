@@ -18,9 +18,8 @@ public class GuardController : MonoBehaviour
     public float chargeSpeed = 1;
     
     public float maxPauseTime = 3;
-    public int startFaceDirection = 1;
     [HideInInspector] public float walkDirection = 1;
-    [HideInInspector] public int faceDirection = 1;
+    public int faceDirection = 1;
 
     private Vector3 initialScale;
     [SerializeField] private Animator animator;
@@ -43,7 +42,6 @@ public class GuardController : MonoBehaviour
     private void Start()
     {
         initialScale = transform.localScale;
-        transform.localScale = new Vector3(initialScale.x * startFaceDirection, initialScale.y, initialScale.z);
         ReleaseBounds();
     }
 

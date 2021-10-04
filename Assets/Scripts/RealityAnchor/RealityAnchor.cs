@@ -11,7 +11,7 @@ public class RealityAnchor : MonoBehaviour
     [SerializeField] private Light2D _light;
     [SerializeField] private float hueRate = 60;
 
-    private static int currentScene = 0;
+    public static int currentScene = 0;
     private float hue = 0;
     
     public void Hit()
