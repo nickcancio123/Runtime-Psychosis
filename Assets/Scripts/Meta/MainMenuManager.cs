@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera mainMenuVCAM;
     [SerializeField] private CinemachineVirtualCamera level1VCAM;
     [SerializeField] private MainMenuCameraScript mainMenuCameraScript;
+    [SerializeField] private AudioClip headButtImpact;
     
     private PlayerInput playerInput;
     
@@ -21,6 +23,11 @@ public class MainMenuManager : MonoBehaviour
     {
         playerInput = new PlayerInput();
         ReadInput();
+    }
+
+    private void Start()
+    {
+        player.GetComponent<MovementController>().enabled = false;
     }
 
     private void ReadInput()
@@ -35,6 +42,9 @@ public class MainMenuManager : MonoBehaviour
         
         player.GetComponent<Animator>().SetTrigger("HeadButt");
         player.GetComponent<MovementController>().enabled = true;
+        player.GetComponent<AudioSource>().clip = headButtImpact;
+        player.GetComponent<AudioSource>().Play();
+        player.GetComponent<CameraShake>().Shake();
         mainMenuUI.SetActive(false);
 
         level1VCAM.Priority = 2;

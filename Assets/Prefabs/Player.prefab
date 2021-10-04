@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3810301076757695356}
   - component: {fileID: 8224467797949151272}
   - component: {fileID: 2040264669065858003}
+  - component: {fileID: 8518172128310299602}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -234,7 +235,6 @@ MonoBehaviour:
   lungeSpeed: 25
   lungeDuration: 0.12
   lungeDelay: 0.78
-  triggerActivationDelay: 0.65
   coolDown: 2
 --- !u!114 &8224467797949151272
 MonoBehaviour:
@@ -347,6 +347,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8518172128310299602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17165682557028842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd808e69b20a7547a8347df3e7634f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomInAmount: 0.3
+  zoomDuration: 0.08
 --- !u!1 &6248661471970447037
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headButtHit: {fileID: 8300000, guid: c0d3f7d00ff621c4f8b413cec4653077, type: 3}
   playerAudioSource: {fileID: 2040264669065858003}
+  camShake: {fileID: 0}
 --- !u!1 &8914557908450360452
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class GuardController : MonoBehaviour
     public Transform bound1;
     public Transform bound2;
     public GuardChargeTrigger chargeTrigger;
+    public GameObject glitchHead;
 
     public bool patrol = true;
     public float patrolSpeed = 0;
@@ -28,10 +30,13 @@ public class GuardController : MonoBehaviour
 
 
     public float sightDistance = 10;
-    public static float eyeLevel = 0.7f;
     public LayerMask rayCastLayerMask;
     public bool doScan = true;
-    
+    public static float eyeLevel = 0.7f;
+    public static float deathFreezeDuration = 0.2f;
+    public static float deathKnockBackSpeed = 20;
+    public static float deathKnockBackDuration = 0.3f;
+
     private void Start()
     {
         initialScale = transform.localScale;
@@ -64,6 +69,7 @@ public class GuardController : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("Dead", true);
+        glitchHead.SetActive(false);
         rb.velocity = Vector2.zero;
     }
 }

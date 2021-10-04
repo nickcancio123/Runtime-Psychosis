@@ -13,7 +13,19 @@ public class CameraShake : MonoBehaviour
     
     public void Shake()
     {
-        vCam = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
+        //Get virtual camera in control of main camera
+        CinemachineVirtualCamera[] vCams = FindObjectsOfType<CinemachineVirtualCamera>();
+        int highestPriority = 0;
+        vCam = vCams[0];
+        foreach (var cam in vCams)
+        {
+            if (cam.Priority > highestPriority)
+            {
+                highestPriority = cam.Priority;
+                vCam = cam;
+            }
+        }
+        
         if (vCam)
         {
             vCam.m_Lens.OrthographicSize -= zoomInAmount;

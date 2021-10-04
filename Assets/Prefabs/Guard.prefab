@@ -176,6 +176,7 @@ MonoBehaviour:
   bound1: {fileID: 4839356398044717211}
   bound2: {fileID: 6665340013687763803}
   chargeTrigger: {fileID: 6283676768219229537}
+  glitchHead: {fileID: 4577217568182445912}
   patrol: 1
   patrolSpeed: 5
   chargeSpeed: 7
