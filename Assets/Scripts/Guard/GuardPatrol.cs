@@ -25,6 +25,9 @@ public class GuardPatrol : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Initialize(animator);
+        
+        guardController.leftFootAudio.Play();
+        guardController.rightFootAudio.Play();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -47,6 +50,12 @@ public class GuardPatrol : StateMachineBehaviour
         //Else pause
         else
             ReachedEnd();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        guardController.leftFootAudio.Stop();
+        guardController.rightFootAudio.Stop();
     }
 
     private void Initialize(Animator animator)

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GlitchInteraction : MonoBehaviour
@@ -9,6 +11,10 @@ public class GlitchInteraction : MonoBehaviour
     [SerializeField] private bool triggerOnStart = false;
     [SerializeField] private List<GlitchTrigger> triggers;
     [SerializeField] private List<GlitchReaction> reactions;
+    [SerializeField] private float lowVolume = 10;
+    [SerializeField] private float highVolume = 30;
+    [SerializeField] private ParticleSystem destructionParticles;
+    private AudioSource audioSource;
 
     private bool triggered = false;
 
@@ -18,6 +24,10 @@ public class GlitchInteraction : MonoBehaviour
             ActivateGlitch();
         else
             glitchBody.SetActive(false);
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.volume = lowVolume;
+        audioSource.Play();
     }
 
     private void Update()
@@ -46,6 +56,7 @@ public class GlitchInteraction : MonoBehaviour
     {
         triggered = true;
         glitchBody.SetActive(true);
+        audioSource.volume = highVolume;
     }
 
     public void PlayReactions()
@@ -54,8 +65,14 @@ public class GlitchInteraction : MonoBehaviour
             return;
         foreach (GlitchReaction reaction in reactions)
             reaction.React();
+
+        destructionParticles.Play();
+        StartCoroutine(SelfDestruct(destructionParticles.main.duration));
     }
-    
-    
-    
+
+    IEnumerator SelfDestruct(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(this.gameObject);
+    }
 }

@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private MovementController movement;
 
+    public float headBangPeriod = 0.3f;
+    public AudioClip headBangAudioClip;
     
     private void Update()
     {

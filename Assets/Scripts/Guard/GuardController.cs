@@ -37,6 +37,9 @@ public class GuardController : MonoBehaviour
     public static float deathKnockBackSpeed = 20;
     public static float deathKnockBackDuration = 0.3f;
 
+    public AudioSource leftFootAudio;
+    public AudioSource rightFootAudio;
+
     private void Start()
     {
         initialScale = transform.localScale;

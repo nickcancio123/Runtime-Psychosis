@@ -18,7 +18,7 @@ public class Jump : MovementModifier
 
     private void OnJumpPress()
     {
-        if (!moveController.CanMove())
+        if (!moveController.CanMove() || !moveController.enabled)
             return;
 
         if (!moveController.groundContact.IsGrounded())

@@ -12,8 +12,6 @@ public class GuardCharge : StateMachineBehaviour
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Charging");
-        
         guardController = animator.gameObject.GetComponent<GuardController>();
         playerController = guardController.playerController;
        
@@ -21,11 +19,17 @@ public class GuardCharge : StateMachineBehaviour
         chargeTrigger.isCharging = true;
 
         guardController.rb.velocity = new Vector2(guardController.chargeSpeed * guardController.faceDirection, 0);
+        
+        guardController.leftFootAudio.Play();
+        guardController.rightFootAudio.Play();
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         chargeTrigger.isCharging = false;
         guardController.rb.velocity = Vector2.zero;
+        
+        guardController.leftFootAudio.Stop();
+        guardController.rightFootAudio.Stop();
     }
 }

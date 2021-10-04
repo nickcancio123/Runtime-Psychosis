@@ -28,6 +28,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         player.GetComponent<MovementController>().enabled = false;
+        player.GetComponent<Animator>().SetBool("inMainMenu", true);
     }
 
     private void ReadInput()
@@ -58,5 +59,8 @@ public class MainMenuManager : MonoBehaviour
         
         level1VCAM.Priority = 2;
         mainMenuVCAM.Priority = 1;
+
+        this.enabled = false;
+        player.GetComponent<Animator>().SetBool("inMainMenu", false);
     }
 }
