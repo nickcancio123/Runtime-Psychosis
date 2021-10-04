@@ -46,7 +46,12 @@ public class GlitchInteraction : MonoBehaviour
     {
         triggered = true;
         glitchBody.SetActive(true);
-        
+    }
+
+    public void PlayReactions()
+    {
+        if (!triggered)
+            return;
         foreach (GlitchReaction reaction in reactions)
             reaction.React();
     }

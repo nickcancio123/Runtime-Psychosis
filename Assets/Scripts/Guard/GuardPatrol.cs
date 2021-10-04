@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class GuardPatrol : StateMachineBehaviour
@@ -86,7 +87,8 @@ public class GuardPatrol : StateMachineBehaviour
             PlayerController playerController = player.GetComponent<PlayerController>();
             guardController.playerController = playerController;
             playerController.Spotted();
-            
+
+            Debug.Log("Spotted");
             _animator.SetTrigger("Spotted");
         }
     }

@@ -16,6 +16,8 @@ public class GaurdPausePatrol : StateMachineBehaviour
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("Pausing");
+        
         _animator = animator;
         guardObj = animator.gameObject;
         flashLight = guardObj.GetComponent<FlashLight>();
