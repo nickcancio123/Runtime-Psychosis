@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private Level1CameraScript level1CamScript;
     [SerializeField] private GameObject mainMenuUI;
+    [SerializeField] private CinemachineVirtualCamera mainMenuVCAM;
+    [SerializeField] private CinemachineVirtualCamera level1VCAM;
+    [SerializeField] private MainMenuCameraScript mainMenuCameraScript;
     
     private PlayerInput playerInput;
     
@@ -27,12 +30,16 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnHeadButt()
     {
+        if (!mainMenuCameraScript.DonePanning())
+            return;
+        
         player.GetComponent<Animator>().SetTrigger("HeadButt");
         player.GetComponent<MovementController>().enabled = true;
-        
-        level1CamScript.inMainMenu = false;
         mainMenuUI.SetActive(false);
-        
+
+        level1VCAM.Priority = 2;
+        mainMenuVCAM.Priority = 1;
+
         //DESTROY WALL
     }
 }
