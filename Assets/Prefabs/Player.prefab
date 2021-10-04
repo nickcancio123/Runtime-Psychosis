@@ -278,7 +278,7 @@ MonoBehaviour:
   animator: {fileID: 2558343919010880647}
   movement: {fileID: 17165682557028853}
   headBangPeriod: 1.125
-  headBangAudioClip: {fileID: 8300000, guid: e4ae4de8c0284f94fb4b9f3e14bbbfc3, type: 3}
+  headBangAudioClip: {fileID: 8300000, guid: fe92e70d503a6324fa9fd996526bd51b, type: 3}
 --- !u!114 &17165682557028853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headButtHit: {fileID: 8300000, guid: c0d3f7d00ff621c4f8b413cec4653077, type: 3}
+  anchorHitSound: {fileID: 8300000, guid: b69868451fd7caf43a939a3e0acc0254, type: 3}
   playerAudioSource: {fileID: 2040264669065858003}
   camShake: {fileID: 8518172128310299602}
 --- !u!1 &8914557908450360452

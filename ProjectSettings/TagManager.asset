@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Enemy
   - Glitch
+  - RealityAnchor
   layers:
   - Default
   - TransparentFX

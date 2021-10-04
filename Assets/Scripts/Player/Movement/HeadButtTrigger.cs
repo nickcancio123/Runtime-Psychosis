@@ -7,6 +7,7 @@ using UnityEngine;
 public class HeadButtTrigger : MonoBehaviour
 {
     [SerializeField] private AudioClip headButtHit;
+    [SerializeField] private AudioClip anchorHitSound;
     [SerializeField] AudioSource playerAudioSource;
     [SerializeField] private CameraShake camShake;
 
@@ -27,11 +28,24 @@ public class HeadButtTrigger : MonoBehaviour
             other.gameObject.transform.parent.gameObject.GetComponent<GlitchInteraction>().PlayReactions();
             OnHeadButtHitBase();
         }
+
+        if (other.gameObject.CompareTag("RealityAnchor"))
+        {
+            other.gameObject.GetComponent<RealityAnchor>().Hit();
+            HitRealityAnchor();
+        }
     }
 
     private void OnHeadButtHitBase()
     {
         playerAudioSource.clip = headButtHit;
+        playerAudioSource.Play();
+        camShake.Shake(null);
+    }
+
+    private void HitRealityAnchor()
+    {
+        playerAudioSource.clip = anchorHitSound;
         playerAudioSource.Play();
         camShake.Shake(null);
     }

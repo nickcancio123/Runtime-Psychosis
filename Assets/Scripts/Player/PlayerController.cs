@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float headBangPeriod = 0.3f;
     public AudioClip headBangAudioClip;
     
+
     private void Update()
     {
         UpdateAnimationParams();

@@ -27,7 +27,7 @@ public class PlayerWallBang : StateMachineBehaviour
 
     IEnumerator HalfPeriodOffset()
     {
-        yield return new WaitForSeconds(playerController.headBangPeriod / 2);
+        yield return new WaitForSeconds(1.9f  * playerController.headBangPeriod);
         playerController.StartCoroutine(HeadBangCycle());
     }
     

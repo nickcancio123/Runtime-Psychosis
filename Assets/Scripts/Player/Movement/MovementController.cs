@@ -14,7 +14,7 @@ public class MovementController : MonoBehaviour
     public bool CanMove() => canMove;
     public void DisableMovement() => canMove = false;
 
-    [HideInInspector] public int faceDirection = 1;
+    public int faceDirection = 1;
     private Vector3 initialScale;
     
     
