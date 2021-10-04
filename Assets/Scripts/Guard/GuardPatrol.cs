@@ -102,8 +102,6 @@ public class GuardPatrol : StateMachineBehaviour
             PlayerController playerController = player.GetComponent<PlayerController>();
             guardController.playerController = playerController;
             playerController.Spotted();
-            
-            guardObj.GetComponent<GuardArrest>().Arrest();
 
             _animator.SetTrigger("Spotted");
         }
