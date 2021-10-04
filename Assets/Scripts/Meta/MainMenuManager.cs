@@ -42,14 +42,21 @@ public class MainMenuManager : MonoBehaviour
         
         player.GetComponent<Animator>().SetTrigger("HeadButt");
         player.GetComponent<MovementController>().enabled = true;
+        StartCoroutine(HeadButtDelay());
+        player.GetComponent<CameraShake>().Shake(mainMenuVCAM);
+        mainMenuUI.SetActive(false);
+        
+        //DESTROY WALL
+    }
+
+    IEnumerator HeadButtDelay()
+    {
+        yield return new WaitForSeconds(0.75f);
+        
         player.GetComponent<AudioSource>().clip = headButtImpact;
         player.GetComponent<AudioSource>().Play();
-        player.GetComponent<CameraShake>().Shake();
-        mainMenuUI.SetActive(false);
-
+        
         level1VCAM.Priority = 2;
         mainMenuVCAM.Priority = 1;
-
-        //DESTROY WALL
     }
 }

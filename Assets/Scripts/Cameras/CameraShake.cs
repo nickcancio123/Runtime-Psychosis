@@ -11,20 +11,12 @@ public class CameraShake : MonoBehaviour
 
     private CinemachineVirtualCamera vCam;
     
-    public void Shake()
+    public void Shake(CinemachineVirtualCamera _vCam)
     {
-        //Get virtual camera in control of main camera
-        CinemachineVirtualCamera[] vCams = FindObjectsOfType<CinemachineVirtualCamera>();
-        int highestPriority = 0;
-        vCam = vCams[0];
-        foreach (var cam in vCams)
-        {
-            if (cam.Priority > highestPriority)
-            {
-                highestPriority = cam.Priority;
-                vCam = cam;
-            }
-        }
+        if (_vCam)
+            vCam = _vCam;
+        else
+            vCam = FindObjectOfType<CinemachineVirtualCamera>();
         
         if (vCam)
         {

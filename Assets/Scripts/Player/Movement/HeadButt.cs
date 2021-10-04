@@ -28,7 +28,7 @@ public class HeadButt : MovementModifier
     
     IEnumerator LungeDelay()
     {
-        if (!moveController.CanMove())
+        if (!moveController.CanMove() || !moveController.enabled)
             yield break;
 
         if (!moveController.groundContact.IsGrounded())
