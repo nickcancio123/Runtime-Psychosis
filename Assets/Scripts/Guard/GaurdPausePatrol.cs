@@ -16,8 +16,6 @@ public class GaurdPausePatrol : StateMachineBehaviour
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Pausing");
-        
         _animator = animator;
         guardObj = animator.gameObject;
         flashLight = guardObj.GetComponent<FlashLight>();
@@ -29,6 +27,13 @@ public class GaurdPausePatrol : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (!guardController.patrol)   
+        {
+            if (guardController.doScan && flashLight.isWorking)
+                ScanForPlayer();
+            return;
+        }
+        
         if (Time.time - pauseStartTime < pauseDuration) //If still pausing
         {
             if (guardController.doScan && flashLight.isWorking)
@@ -38,11 +43,6 @@ public class GaurdPausePatrol : StateMachineBehaviour
         {
             _animator.SetBool("Pausing", false);
         }
-    }
-
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
     }
 
     private void ScanForPlayer()

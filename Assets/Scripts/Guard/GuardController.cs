@@ -10,12 +10,12 @@ public class GuardController : MonoBehaviour
     public Transform bound2;
     public GuardChargeTrigger chargeTrigger;
 
-    public bool doWalk = true;
-
-    public float walkSpeed = 0;
+    public bool patrol = true;
+    public float patrolSpeed = 0;
+    public float chargeSpeed = 1;
+    
     public float maxPauseTime = 3;
     public float walkDirection = 1;
-    public bool startRandomDirection = true;
     [HideInInspector] public int faceDirection = 1;
 
     private Vector3 initialScale;
