@@ -38,7 +38,6 @@ public class MovementController : MonoBehaviour
     }
 
     
-    
     private void Start()
     {
         canMove = true;

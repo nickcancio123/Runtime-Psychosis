@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimationParams()
     {
-        animator.SetFloat("Speed", rb.velocity.magnitude);
+        animator.SetFloat("xVel", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("yVel", rb.velocity.y);
+        animator.SetBool("IsGrounded", movement.groundContact.IsGrounded());
     }
 
     public void Spotted()

@@ -26,6 +26,7 @@ public class Jump : MovementModifier
 
         isJumping = true;
         jumpStartTime = Time.time;
+        moveController.animator.SetTrigger("Jump");
     }
 
     private void OnJumpRelease() => isJumping = false;

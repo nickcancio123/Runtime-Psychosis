@@ -11,7 +11,6 @@ public class Hide : MovementModifier
     private bool isHiding = false;
     public bool IsHiding() => isHiding;
 
-    private Color initialColor;
     private Vector3 initialScale;
     
     protected override void ReadInput()
@@ -23,7 +22,6 @@ public class Hide : MovementModifier
     private void Start()
     {
         initialScale = transform.localScale;
-        initialColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     private void HidePressed()
@@ -33,13 +31,11 @@ public class Hide : MovementModifier
 
         if (!canHide)
             return;
-
-        isHiding = true;
-        moveController.animator.SetBool("Crouching", true);
-        moveController.DisableOtherModifiers(this);
         
-        //temp
-        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        isHiding = true;
+        moveController.rb.velocity = Vector2.zero;
+        moveController.animator.SetBool("Hiding", true);
+        moveController.DisableOtherModifiers(this);
     }
 
     private void HideReleased()
@@ -51,11 +47,7 @@ public class Hide : MovementModifier
             return;
 
         isHiding = false;
-        moveController.animator.SetBool("Crouching", false);
+        moveController.animator.SetBool("Hiding", false);
         moveController.EnableOtherModifiers();
-        
-        
-        //temp
-        gameObject.GetComponent<SpriteRenderer>().color = initialColor;
     }
 }

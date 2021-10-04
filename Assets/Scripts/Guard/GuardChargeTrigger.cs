@@ -21,4 +21,17 @@ public class GuardChargeTrigger : MonoBehaviour
             animator.SetTrigger("CaughtPlayer");
         }
     }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!isCharging)
+            return;
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            rb.velocity = Vector2.zero;
+            other.gameObject.GetComponent<PlayerController>().GotCaught();
+            animator.SetTrigger("CaughtPlayer");
+        }
+    }
 }
