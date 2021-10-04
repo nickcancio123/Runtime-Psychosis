@@ -14,7 +14,6 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private int fontSize = 75;
     [SerializeField] private List<String> sentences = new List<string>();
 
-    
     private GameObject textObj;
     private TextMesh tm;
     private bool triggered = false;
