@@ -14,15 +14,17 @@ public class GuardController : MonoBehaviour
 
     public float walkSpeed = 0;
     public float maxPauseTime = 3;
-    public int faceDirection = 1;
+    public float walkDirection = 1;
+    public bool startRandomDirection = true;
+    [HideInInspector] public int faceDirection = 1;
 
     private Vector3 initialScale;
     [SerializeField] private Animator animator;
 
     [HideInInspector] public PlayerController playerController;
-    [HideInInspector] public bool isDead = false;  
+    [HideInInspector] public bool isDead = false;
 
-    
+
     public float sightDistance = 10;
     public static float eyeLevel = 0.7f;
     public LayerMask rayCastLayerMask;
