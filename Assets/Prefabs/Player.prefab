@@ -259,7 +259,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.18}
   m_Size: {x: 2, y: 4}
   m_Direction: 0
 --- !u!114 &4217999570941237410
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   moveController: {fileID: 17165682557028853}
-  jumpSpeed: 12
+  jumpSpeed: 12.7
   jumpExtensionDuration: 0.27
 --- !u!114 &3810301076757695356
 MonoBehaviour:

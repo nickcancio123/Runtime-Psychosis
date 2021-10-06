@@ -18,6 +18,7 @@ public class Alarm : MonoBehaviour
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -26,7 +27,6 @@ public class Alarm : MonoBehaviour
         {
             if (Time.time - lastFlashTime > flashPeriod)
             {
-                print("Flash");
                 _light.SetActive(!_light.activeInHierarchy);
                 lastFlashTime = Time.time;
             }
@@ -35,7 +35,6 @@ public class Alarm : MonoBehaviour
 
     public void SetOff()
     {
-        print("Setoff");
         audioSource.Play();
         flashing = true;
     }

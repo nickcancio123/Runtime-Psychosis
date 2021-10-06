@@ -19,8 +19,11 @@ public class SpawnGuardsGlitchReaction : GlitchReaction
     {
         foreach (GameObject guard in guards)
             guard.SetActive(true);
-        
-        foreach(GameObject alarm in alarms)
+
+        foreach (GameObject alarm in alarms)
+        {
+            alarm.SetActive(true);   
             alarm.GetComponent<Alarm>().SetOff();
+        }
     }
 }

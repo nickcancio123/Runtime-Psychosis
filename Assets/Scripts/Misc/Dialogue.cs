@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
@@ -85,9 +83,10 @@ public class Dialogue : MonoBehaviour
     {
         textObj = new GameObject("Speaker_Text");
         textObj.transform.parent = transform;
+        textObj.AddComponent<MeshRenderer>();
         tm = textObj.AddComponent<TextMesh>();
         tm.color = Color.white;
-        tm.fontStyle = FontStyle.Bold;
+        tm.fontStyle = FontStyle.Italic;
         tm.alignment = TextAlignment.Center;
         tm.anchor = TextAnchor.MiddleCenter;
         tm.characterSize = 0.06f;

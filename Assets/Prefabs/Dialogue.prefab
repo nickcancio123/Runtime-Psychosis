@@ -50,11 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4e75d4e03e35d4faf9c71fb628ab96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 6797006056335280729}
   characterDelay: 0.03
   sentenceDelay: 1.2
   textOffset: 4
-  fontSize: 90
+  fontSize: 84
+  font: {fileID: 0}
   sentences: []
 --- !u!61 &6797006056335280729
 BoxCollider2D:
