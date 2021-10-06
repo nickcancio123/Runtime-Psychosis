@@ -73,7 +73,6 @@ public class MainMenuManager : MonoBehaviour
         
         player.GetComponent<MovementController>().enabled = true;
         player.GetComponent<Animator>().SetBool("inMainMenu", false);
-        player.GetComponent<Animator>().SetTrigger("HeadButt");
         StartCoroutine(player.GetComponent<HeadButt>().LungeDelay());
         StartCoroutine(HeadButtDelay());
         

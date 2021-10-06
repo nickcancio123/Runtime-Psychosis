@@ -12,11 +12,10 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private float sentenceDelay = 2;
     [SerializeField] private float textOffset = 1;
     [SerializeField] private int fontSize = 75;
+    [SerializeField] private Font font;
     [SerializeField] private int maxCharactersPerLine = 20;
     [SerializeField] private List<String> sentences = new List<string>();
     [SerializeField] private GameObject textBox;
-
-    
     private GuardController guardController;
     private GameObject textObj;
     private TextMesh tm;
@@ -102,6 +101,7 @@ public class Dialogue : MonoBehaviour
         meshRenderer.sortingOrder = 10;
         tm = textObj.AddComponent<TextMesh>();
         tm.color = Color.white;
+        tm.font = font;
         tm.fontStyle = FontStyle.Italic;
         tm.alignment = TextAlignment.Center;
         tm.anchor = TextAnchor.MiddleCenter;

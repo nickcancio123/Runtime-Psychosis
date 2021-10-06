@@ -12,6 +12,8 @@ public class HeadButt : MovementModifier
     [SerializeField] private float lungeDuration = 0.5f;
     [SerializeField] private float lungeDelay = 0.2f;
     [SerializeField] private float coolDown = 2.0f;
+
+    [HideInInspector] public bool isHeadButting = false;
     
     private AudioSource audioSource;
     private float hbStartTime = 0;
@@ -38,6 +40,8 @@ public class HeadButt : MovementModifier
             yield break;
         
         hbStartTime = Time.time;
+
+        isHeadButting = true;
         
         moveController.DisableOtherModifiers(this);
         moveController.animator.SetTrigger("HeadButt");
@@ -65,5 +69,7 @@ public class HeadButt : MovementModifier
         yield return new WaitForSeconds(lungeDuration);
         moveController.EnableOtherModifiers();   
         hbTrigger.SetActive(false);
+
+        isHeadButting = false;
     }
 }

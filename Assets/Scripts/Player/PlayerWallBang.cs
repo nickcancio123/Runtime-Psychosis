@@ -34,6 +34,9 @@ public class PlayerWallBang : StateMachineBehaviour
     IEnumerator HeadBangCycle()
     {
         yield return new WaitForSeconds(playerController.headBangPeriod);
+
+        if (playerObj.GetComponent<HeadButt>().isHeadButting)
+            yield break;
         
         playerAudioSource.clip = playerController.headBangAudioClip;
         playerAudioSource.Play();
