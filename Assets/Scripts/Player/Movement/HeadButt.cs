@@ -26,9 +26,9 @@ public class HeadButt : MovementModifier
         playerInput.Interact.HeadButt.performed += ctx => StartCoroutine(LungeDelay());
     }
     
-    IEnumerator LungeDelay()
+    public IEnumerator LungeDelay()
     {
-        if (!moveController.CanMove() || !moveController.enabled)
+        if (!moveController.CanMove())
             yield break;
 
         if (!moveController.groundContact.IsGrounded())

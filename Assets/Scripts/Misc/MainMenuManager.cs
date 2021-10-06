@@ -71,11 +71,10 @@ public class MainMenuManager : MonoBehaviour
         if (!mainMenuCameraScript.DonePanning())
             return;
         
+        player.GetComponent<Animator>().SetBool("inMainMenu", false);
         player.GetComponent<Animator>().SetTrigger("HeadButt");
-        player.GetComponent<MovementController>().enabled = true;
+        StartCoroutine(player.GetComponent<HeadButt>().LungeDelay());
         StartCoroutine(HeadButtDelay());
-        player.GetComponent<CameraShake>().Shake(mainMenuVCAM);
-        mainMenuUI.SetActive(false);
         
         //DESTROY WALL
     }
@@ -84,14 +83,14 @@ public class MainMenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         
-        player.GetComponent<AudioSource>().clip = headButtImpact;
-        player.GetComponent<AudioSource>().Play();
+        mainMenuUI.SetActive(false);
+
+        player.GetComponent<MovementController>().enabled = true;
         
         level1VCAM.Priority = 2;
         mainMenuVCAM.Priority = 1;
 
         this.enabled = false;
-        player.GetComponent<Animator>().SetBool("inMainMenu", false);
     }
 
     IEnumerator StartMainTextFade()

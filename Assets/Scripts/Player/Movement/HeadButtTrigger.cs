@@ -39,6 +39,12 @@ public class HeadButtTrigger : MonoBehaviour
             other.gameObject.GetComponent<RealityAnchor>().Hit();
             HitRealityAnchor();
         }
+
+        if (other.gameObject.CompareTag("Door"))
+        {
+            other.gameObject.GetComponent<Door>().OpenDoor();
+            OnHeadButtHitBase();
+        }
     }
 
     private void OnDisable()
