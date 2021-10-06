@@ -9,7 +9,7 @@ public class SwitchGuardDirectionGlitchReaction : GlitchReaction
     {
         foreach (GameObject guard in guards)
         {
-            guard.GetComponent<GuardController>().faceDirection *= -1;
+            guard.GetComponent<GuardController>().walkDirection *= 1;
         }
     }
 }
