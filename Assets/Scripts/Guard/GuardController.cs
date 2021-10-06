@@ -12,6 +12,8 @@ public class GuardController : MonoBehaviour
     public Transform bound2;
     public GuardChargeTrigger chargeTrigger;
     public GameObject glitchHead;
+    public ScreenBlackFade screenBlackFade;
+    public FlashLight flashLight;
 
     public bool patrol = true;
     public float patrolSpeed = 0;

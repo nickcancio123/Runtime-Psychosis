@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private List<String> sentences = new List<string>();
 
     
+    private GuardController guardController;
     private GameObject textObj;
     private TextMesh tm;
     private bool triggered = false;
@@ -23,10 +25,20 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
+        guardController = gameObject.transform.parent.gameObject.GetComponent<GuardController>();
         CreateTextMesh();
     }
 
-    private void Update() => SetTextPosition();
+    private void Update()
+    {
+        if (guardController.isDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        SetTextPosition();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

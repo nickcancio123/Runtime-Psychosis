@@ -13,6 +13,8 @@ public class GuardDeath : StateMachineBehaviour
         guardObj = animator.gameObject;
         guardController = guardObj.GetComponent<GuardController>();
         guardController.StartCoroutine(FreezePeriod());
+        
+        guardController.flashLight.isWorking = false;
     }
 
     IEnumerator FreezePeriod()
