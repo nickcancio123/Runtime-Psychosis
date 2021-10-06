@@ -54,6 +54,7 @@ public class HeadButtTrigger : MonoBehaviour
 
     private void OnHeadButtHitBase()
     {
+        playerAudioSource.Stop();
         playerAudioSource.clip = headButtHit;
         playerAudioSource.Play();
         camShake.Shake(null);
@@ -62,6 +63,7 @@ public class HeadButtTrigger : MonoBehaviour
 
     private void HitRealityAnchor()
     {
+        playerAudioSource.Stop();
         playerAudioSource.clip = anchorHitSound;
         playerAudioSource.Play();
         camShake.Shake(null);

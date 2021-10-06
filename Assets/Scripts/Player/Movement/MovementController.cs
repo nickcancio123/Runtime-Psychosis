@@ -61,9 +61,9 @@ public class MovementController : MonoBehaviour
 
     void SetFaceDirection()
     {
-        if (rb.velocity.x > 0)
+        if (rb.velocity.x > 0.05f)
             faceDirection = 1;
-        if (rb.velocity.x < 0)
+        if (rb.velocity.x < -0.05f)
             faceDirection = -1;
         transform.localScale = new Vector3(initialScale.x * faceDirection, initialScale.y, initialScale.z);
     }

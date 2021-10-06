@@ -71,6 +71,7 @@ public class MainMenuManager : MonoBehaviour
         if (!mainMenuCameraScript.DonePanning())
             return;
         
+        player.GetComponent<MovementController>().enabled = true;
         player.GetComponent<Animator>().SetBool("inMainMenu", false);
         player.GetComponent<Animator>().SetTrigger("HeadButt");
         StartCoroutine(player.GetComponent<HeadButt>().LungeDelay());
@@ -84,8 +85,6 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         
         mainMenuUI.SetActive(false);
-
-        player.GetComponent<MovementController>().enabled = true;
         
         level1VCAM.Priority = 2;
         mainMenuVCAM.Priority = 1;
