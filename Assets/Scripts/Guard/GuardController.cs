@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Cinemachine;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -57,6 +59,17 @@ public class GuardController : MonoBehaviour
     private void Update()
     {
         SetFaceDirection();
+        
+        //If player hiding, don't collide
+        GameObject player = GameObject.Find("Player");
+        if (!player)
+            return;
+        if (isDead)
+            return;
+        if (player.GetComponent<Hide>().IsHiding())
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        else
+            gameObject.GetComponent<Collider2D>().enabled = true;
     }
 
     private void SetFaceDirection()

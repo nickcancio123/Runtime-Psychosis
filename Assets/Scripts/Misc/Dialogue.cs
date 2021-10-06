@@ -14,6 +14,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private int fontSize = 75;
     [SerializeField] private int maxCharactersPerLine = 20;
     [SerializeField] private List<String> sentences = new List<string>();
+    [SerializeField] private GameObject textBox;
 
     
     private GuardController guardController;
@@ -52,6 +53,7 @@ public class Dialogue : MonoBehaviour
         triggered = true;
         sentenceIndex = 0;
         tm.text = "";
+        textBox.SetActive(true);
 
         StartCoroutine(PrintCharacters());
     }
@@ -88,13 +90,16 @@ public class Dialogue : MonoBehaviour
     private void SetTextPosition()
     {
         tm.transform.position = transform.position + Vector3.up * textOffset;
+        textBox.transform.position = transform.position + Vector3.up * textOffset;
     }
 
     private void CreateTextMesh()
     {
         textObj = new GameObject("Speaker_Text");
         textObj.transform.parent = transform;
-        textObj.AddComponent<MeshRenderer>();
+        MeshRenderer meshRenderer = textObj.AddComponent<MeshRenderer>();
+        meshRenderer.sortingLayerName = "Player";
+        meshRenderer.sortingOrder = 10;
         tm = textObj.AddComponent<TextMesh>();
         tm.color = Color.white;
         tm.fontStyle = FontStyle.Italic;
