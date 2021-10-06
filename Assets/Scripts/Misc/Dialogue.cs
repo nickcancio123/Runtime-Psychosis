@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private float sentenceDelay = 2;
     [SerializeField] private float textOffset = 1;
     [SerializeField] private int fontSize = 75;
+    [SerializeField] private int maxCharactersPerLine = 20;
     [SerializeField] private List<String> sentences = new List<string>();
 
     
@@ -19,6 +21,7 @@ public class Dialogue : MonoBehaviour
     private TextMesh tm;
     private bool triggered = false;
     private int sentenceIndex = 0;
+    private int lineCharCount = 0;
 
 
     private void Start()
@@ -59,6 +62,13 @@ public class Dialogue : MonoBehaviour
         
         foreach (char letter in sentences[sentenceIndex].ToCharArray()) {
             tm.text += letter;
+            lineCharCount++;
+            if (lineCharCount > maxCharactersPerLine && tm.text.ElementAt(tm.text.Length - 1) == ' ')
+            {
+                tm.text += "\n";
+                lineCharCount = 0;
+            }
+            
             yield return new WaitForSeconds(characterDelay);
         }
 
@@ -69,6 +79,7 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator PrintNextSentence()
     {
+        lineCharCount = 0;
         yield return new WaitForSeconds(sentenceDelay);
         StartCoroutine(PrintCharacters());
     }
