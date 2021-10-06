@@ -13,4 +13,10 @@ public class LevelScript : MonoBehaviour
         Cursor.visible = false;
         screenBlackFade.StartFade();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
 }
