@@ -29,6 +29,8 @@ public class GlitchInteraction : MonoBehaviour
             glitchBody.SetActive(false);
         
         audioSource = gameObject.GetComponent<AudioSource>();
+        if (!audioSource)
+            return;
         audioSource.volume = lowVolume;
         audioSource.Play();
     }
@@ -59,6 +61,10 @@ public class GlitchInteraction : MonoBehaviour
     {
         triggered = true;
         glitchBody.SetActive(true);
+        
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (!audioSource)
+            return;
         audioSource.volume = highVolume;
     }
 
