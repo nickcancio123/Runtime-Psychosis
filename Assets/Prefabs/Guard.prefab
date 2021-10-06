@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 719185359260175820}
   - component: {fileID: 6990519446509779044}
   - component: {fileID: 2051014007880761101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Guard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 1397407791792637328}
   - component: {fileID: 2328967377215531933}
   - component: {fileID: 6283676768219229537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ChargeTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6665340013687763803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bound 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 6642414765967643216}
   - component: {fileID: 8246649473115677539}
   - component: {fileID: 7288873986876960901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 1244689919563574657}
   - component: {fileID: 1137678570548170305}
   - component: {fileID: 8883766976169096370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1687524188633240282}
   - component: {fileID: 6532420630554214578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlashLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5634487977622454750}
   - component: {fileID: 5393654502843792695}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: SoftLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4839356398044717211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bound 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 8359043232542041893}
   - component: {fileID: 4209289918618034199}
   - component: {fileID: 7921593069678088314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,6 +1061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenBlackFade
       objectReference: {fileID: 0}
+    - target: {fileID: 110275082131768145, guid: 450a9118f35f2bc4baf02a280271f4a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 190623794382032533, guid: 450a9118f35f2bc4baf02a280271f4a0, type: 3}
       propertyPath: fadeRate
       value: 1
@@ -1112,6 +1116,14 @@ PrefabInstance:
     - target: {fileID: 1280654008101989569, guid: 450a9118f35f2bc4baf02a280271f4a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587760176224981308, guid: 450a9118f35f2bc4baf02a280271f4a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143906575803798928, guid: 450a9118f35f2bc4baf02a280271f4a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450a9118f35f2bc4baf02a280271f4a0, type: 3}
