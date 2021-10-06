@@ -200,6 +200,7 @@ MonoBehaviour:
   doScan: 1
   leftFootAudio: {fileID: 719185359260175820}
   rightFootAudio: {fileID: 6990519446509779044}
+  isJojo: 0
 --- !u!114 &7351780161926948177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +226,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3d29e62e6979cb04a84690818d4a8e4a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cfbd888e29a994348822a4c56688bcf0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -233,10 +234,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 3
   DopplerLevel: 1.17
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 63.152546
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -285,8 +286,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.34166667
+      time: 0.24803925
+      value: 0.34956414
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -321,7 +322,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6aa86afe94541f0489df3aa46809b4df, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3bcae4a2ec2ec8840818e7083b3ffbc5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -329,10 +330,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 15
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 62.535297
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -615,7 +616,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 747e06d86db11a94f9f97c3503d31563, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

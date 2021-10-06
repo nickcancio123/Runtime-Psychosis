@@ -27,7 +27,7 @@ public class GuardPatrol : StateMachineBehaviour
         Initialize(animator);
         
         guardController.leftFootAudio.Play();
-        guardController.rightFootAudio.Play();
+        guardController.StartCoroutine(HalfFootStepDelay());
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -107,6 +107,12 @@ public class GuardPatrol : StateMachineBehaviour
 
             _animator.SetTrigger("Spotted");
         }
+    }
+    
+    IEnumerator HalfFootStepDelay()
+    {
+        yield return new WaitForSeconds(guardController.leftFootAudio.clip.length / 2);
+        guardController.rightFootAudio.Play();
     }
 }
 

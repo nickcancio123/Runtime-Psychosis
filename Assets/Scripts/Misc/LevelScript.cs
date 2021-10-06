@@ -10,6 +10,7 @@ public class LevelScript : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         screenBlackFade.StartFade();
     }
 }

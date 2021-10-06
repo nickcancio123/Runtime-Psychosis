@@ -54,11 +54,12 @@ MonoBehaviour:
   characterDelay: 0.03
   sentenceDelay: 1.2
   textOffset: 4
-  font: {fileID: 12800000, guid: 4090cc25602ada0409ac883979fc8e0a, type: 3}
-  fontSize: 84
+  fontSize: 130
   maxCharactersPerLine: 20
   sentences: []
   textBox: {fileID: 487208301585503033}
+  destroyOnDeath: 1
+  destructionAfterDeathDelay: 6
 --- !u!61 &6797006056335280729
 BoxCollider2D:
   m_ObjectHideFlags: 0

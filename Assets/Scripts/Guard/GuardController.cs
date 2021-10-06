@@ -43,6 +43,8 @@ public class GuardController : MonoBehaviour
     public AudioSource leftFootAudio;
     public AudioSource rightFootAudio;
 
+    [SerializeField] private bool isJojo = false;
+    
     private void Start()
     {
         initialScale = transform.localScale;
@@ -83,6 +85,12 @@ public class GuardController : MonoBehaviour
 
     public void OnDie()
     {
+        if (isJojo)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         isDead = true;
         animator.SetBool("Dead", true);
         glitchHead.SetActive(false);

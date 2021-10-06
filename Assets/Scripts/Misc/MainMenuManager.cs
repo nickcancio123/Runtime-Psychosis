@@ -75,8 +75,6 @@ public class MainMenuManager : MonoBehaviour
         player.GetComponent<Animator>().SetBool("inMainMenu", false);
         StartCoroutine(player.GetComponent<HeadButt>().LungeDelay());
         StartCoroutine(HeadButtDelay());
-        
-        //DESTROY WALL
     }
 
     IEnumerator HeadButtDelay()

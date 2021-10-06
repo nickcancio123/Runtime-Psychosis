@@ -14,7 +14,7 @@ public class LightFlicker : MonoBehaviour
     [SerializeField] private float maxOffPeriod = 0.5f;
     [SerializeField] private bool isRandom = true;
     
-    private void Awake()
+    private void OnEnable()
     {
         StartCoroutine(InitialTurnOffDelay());
     }
@@ -24,7 +24,8 @@ public class LightFlicker : MonoBehaviour
         float delay = (isRandom) ? UnityEngine.Random.Range(0, maxOnPeriod) : maxOnPeriod;
         yield return new WaitForSeconds(delay);
         _light.SetActive(false);
-        StartCoroutine(TurnOnDelay());
+        if (gameObject.activeInHierarchy)   
+            StartCoroutine(TurnOnDelay());
     }
 
     IEnumerator TurnOnDelay()
@@ -32,7 +33,8 @@ public class LightFlicker : MonoBehaviour
         float delay = (isRandom) ? UnityEngine.Random.Range(0, maxOffPeriod) : maxOffPeriod;
         yield return new WaitForSeconds(delay);
         _light.SetActive(true);
-        StartCoroutine(TurnOffDelay());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(TurnOffDelay());
     }
     
     IEnumerator InitialTurnOffDelay()
@@ -40,6 +42,7 @@ public class LightFlicker : MonoBehaviour
         float delay = (isRandom) ? UnityEngine.Random.Range(0, maxInitialOnPeriod) : maxInitialOnPeriod;
         yield return new WaitForSeconds(delay);
         _light.SetActive(false);
-        StartCoroutine(TurnOnDelay());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(TurnOnDelay());
     }
 }

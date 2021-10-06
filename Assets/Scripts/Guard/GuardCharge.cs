@@ -21,7 +21,7 @@ public class GuardCharge : StateMachineBehaviour
         guardController.rb.velocity = new Vector2(guardController.chargeSpeed * guardController.faceDirection, 0);
         
         guardController.leftFootAudio.Play();
-        guardController.rightFootAudio.Play();
+        guardController.StartCoroutine(HalfFootStepDelay());
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -31,5 +31,11 @@ public class GuardCharge : StateMachineBehaviour
         
         guardController.leftFootAudio.Stop();
         guardController.rightFootAudio.Stop();
+    }
+
+    IEnumerator HalfFootStepDelay()
+    {
+        yield return new WaitForSeconds(guardController.leftFootAudio.clip.length / 2);
+        guardController.rightFootAudio.Play();
     }
 }
