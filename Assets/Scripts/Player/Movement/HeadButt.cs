@@ -36,13 +36,16 @@ public class HeadButt : MovementModifier
         if (!moveController.groundContact.IsGrounded())
             yield break;
 
+        if (gameObject.GetComponent<Hide>().IsHiding())
+            yield break;
+
         if (Time.time - hbStartTime < coolDown)
             yield break;
         
         hbStartTime = Time.time;
 
         isHeadButting = true;
-        
+
         moveController.DisableOtherModifiers(this);
         moveController.animator.SetTrigger("HeadButt");
         

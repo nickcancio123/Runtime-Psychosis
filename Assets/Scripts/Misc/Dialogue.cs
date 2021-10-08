@@ -35,18 +35,21 @@ public class Dialogue : MonoBehaviour
 
     private void Update()
     {
-        //Always make face right direction
-        if (guardController.gameObject.transform.localScale.x < 0)
-            textObj.transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
-        else
-            textObj.transform.localScale = initialScale;
-        
-        if (guardController.isDead)
+        //Always make face right direction when on guard controller
+        if (guardController)
         {
-            if (destroyOnDeath)
+            if (guardController.gameObject.transform.localScale.x < 0)
+                textObj.transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+            else
+                textObj.transform.localScale = initialScale;
+        
+            if (guardController.isDead)
             {
-                SelfDestruct();
-                return;   
+                if (destroyOnDeath)
+                {
+                    SelfDestruct();
+                    return;   
+                }
             }
         }
         
@@ -56,8 +59,9 @@ public class Dialogue : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Dialogue after death is can only be triggered after death
-        if (!destroyOnDeath && !guardController.isDead)
-            return;
+        if (guardController)
+            if (!destroyOnDeath && !guardController.isDead)
+                return;
         
         if (other.gameObject.CompareTag("Player") && !triggered)
             StartDialogue();

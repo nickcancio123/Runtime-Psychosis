@@ -78,7 +78,8 @@ public class GlitchInteraction : MonoBehaviour
         }
 
         //destructionParticles.Play();
-        StartCoroutine(SelfDestruct(destructionParticles.main.duration));
+        Destroy(this.gameObject);
+
     }
 
     private void GetTriggersAndReactions()

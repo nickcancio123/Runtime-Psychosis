@@ -28,12 +28,6 @@ public class GuardArrest : MonoBehaviour
     IEnumerator SwitchSceneOnDelay()
     {
         yield return new WaitForSeconds(switchSceneDelay);
-        
-        RealityAnchor.currentScene = 0;
-
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        else
-            SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Run : MovementModifier
 {
-    [SerializeField] private float runSpeed = 10;
+    public float runSpeed = 10;
     [SerializeField] private float groundAccel = 0.4f;
     [SerializeField] private float airAccel = 0.2f;
     

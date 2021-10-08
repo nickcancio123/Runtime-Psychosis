@@ -241,7 +241,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5f1645f39340eda449cbf7a010d67423, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -348,6 +348,7 @@ MonoBehaviour:
   lungeDuration: 0.12
   lungeDelay: 0.7
   coolDown: 2
+  isHeadButting: 0
 --- !u!114 &8224467797949151272
 MonoBehaviour:
   m_ObjectHideFlags: 0

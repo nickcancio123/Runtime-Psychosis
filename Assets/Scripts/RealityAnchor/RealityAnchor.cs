@@ -11,27 +11,31 @@ public class RealityAnchor : MonoBehaviour
     [SerializeField] private Light2D _light;
     [SerializeField] private float hueRate = 60;
     [SerializeField] private ParticleSystem binaryParticles;
+    [SerializeField] private float lightGrowthRateOnHit = 2f;
 
-    public static int currentScene = 0;
-    private float hue = 0;
+    private bool bHit = false;
+
+private float hue = 0;
     
     public void Hit()
     {
         binaryParticles.Play();
-        _light.intensity *= 2;
-        _light.pointLightOuterRadius *= 2;
-        
+        _light.intensity *= 2.5f;
+        bHit = true;        
         StartCoroutine(SceneChange());
     }
 
     IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(sceneChangeDelay);
-        SceneManager.LoadScene(++currentScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void Update()
     {
         _light.color = Color.HSVToRGB(hue + hueRate * Time.deltaTime, 1, 1);
+
+        if (bHit)
+            _light.pointLightOuterRadius += lightGrowthRateOnHit;
     }
 }
