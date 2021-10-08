@@ -15,6 +15,7 @@ public class PlayerWallBang : StateMachineBehaviour
         playerObj = animator.gameObject;
         playerController = playerObj.GetComponent<PlayerController>();
         playerAudioSource = playerObj.GetComponent<AudioSource>();
+        playerAudioSource.clip = playerController.headBangAudioClip;
         continueBanging = true;
 
         playerController.StartCoroutine(HalfPeriodOffset());
@@ -38,7 +39,6 @@ public class PlayerWallBang : StateMachineBehaviour
         if (playerObj.GetComponent<HeadButt>().isHeadButting)
             yield break;
         
-        playerAudioSource.clip = playerController.headBangAudioClip;
         playerAudioSource.Play();
 
         if (continueBanging)

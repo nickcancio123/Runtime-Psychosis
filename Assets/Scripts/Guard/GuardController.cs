@@ -20,7 +20,8 @@ public class GuardController : MonoBehaviour
     public bool patrol = true;
     public float patrolSpeed = 0;
     public float chargeSpeed = 1;
-    
+
+    public float minPauseTime = 2.2f;
     public float maxPauseTime = 3;
     [HideInInspector] public float walkDirection = 1;
     public int faceDirection = 1;

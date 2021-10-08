@@ -21,7 +21,7 @@ public class GaurdPausePatrol : StateMachineBehaviour
         flashLight = guardObj.GetComponent<FlashLight>();
         guardController = guardObj.GetComponent<GuardController>();
         
-        pauseDuration = Random.Range(2, guardController.maxPauseTime);
+        pauseDuration = Random.Range(guardController.minPauseTime, guardController.maxPauseTime);
         pauseStartTime = Time.time;
     }
 

@@ -77,9 +77,9 @@ public class GlitchInteraction : MonoBehaviour
             reaction.React();
         }
 
-        //destructionParticles.Play();
+        destructionParticles.Play();
+        destructionParticles.transform.parent = null;
         Destroy(this.gameObject);
-
     }
 
     private void GetTriggersAndReactions()
