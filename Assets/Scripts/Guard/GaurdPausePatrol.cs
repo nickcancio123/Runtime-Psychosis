@@ -54,6 +54,9 @@ public class GaurdPausePatrol : StateMachineBehaviour
         if (!raycastHit)
             return;
 
+        if (raycastHit.collider.gameObject.CompareTag("Ground"))
+            return;
+        
         if (raycastHit.collider.gameObject.CompareTag("Player"))
         {
             GameObject player = raycastHit.collider.gameObject;

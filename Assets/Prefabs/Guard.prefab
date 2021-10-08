@@ -187,6 +187,7 @@ MonoBehaviour:
   patrol: 1
   patrolSpeed: 5
   chargeSpeed: 7
+  minPauseTime: 2.2
   maxPauseTime: 3
   walkDirection: 1
   faceDirection: 1
@@ -196,7 +197,7 @@ MonoBehaviour:
   sightDistance: 9
   rayCastLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2147483647
   doScan: 1
   leftFootAudio: {fileID: 719185359260175820}
   rightFootAudio: {fileID: 6990519446509779044}

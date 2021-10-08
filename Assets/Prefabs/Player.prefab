@@ -472,8 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd808e69b20a7547a8347df3e7634f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomInAmount: 0.3
-  zoomDuration: 0.08
+  zoomInAmount: 0.9
+  zoomDuration: 0.15
 --- !u!1 &6248661471970447037
 GameObject:
   m_ObjectHideFlags: 0

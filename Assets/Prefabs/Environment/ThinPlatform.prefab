@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7267501740056614835}
   - component: {fileID: 7267501740056614834}
   - component: {fileID: 7267501740056614845}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ThinPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}

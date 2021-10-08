@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5801497901205595523}
   - component: {fileID: 7956272378954209171}
   - component: {fileID: 6367541363745503222}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smaller 2d Platform
   m_TagString: Ground
   m_Icon: {fileID: 0}

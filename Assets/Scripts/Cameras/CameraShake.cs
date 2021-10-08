@@ -10,22 +10,18 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float zoomDuration = 0.1f;
 
     private CinemachineVirtualCamera vCam;
-    
-    public void Shake(CinemachineVirtualCamera _vCam)
+
+    public void Shake()
     {
-        if (_vCam)
-            vCam = _vCam;
-        else
-            vCam = FindObjectOfType<CinemachineVirtualCamera>();
-        
-        if (vCam)
-        {
-            vCam.m_Lens.OrthographicSize -= zoomInAmount;
-            StartCoroutine(Unshake());
-        }
+         vCam = FindObjectOfType<CinemachineVirtualCamera>();
+         if (vCam)
+         {
+             vCam.m_Lens.OrthographicSize -= zoomInAmount;
+             StartCoroutine(UnShake());
+         }
     }
 
-    IEnumerator Unshake()
+    IEnumerator UnShake()
     {
         yield return new WaitForSeconds(zoomDuration);
         vCam.m_Lens.OrthographicSize += zoomInAmount;

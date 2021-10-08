@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7004448426737206572}
   - component: {fileID: 7004448426737206573}
   - component: {fileID: 7004448426737206570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -107,6 +107,6 @@ SpriteRenderer:
   m_Size: {x: 23.486238, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
